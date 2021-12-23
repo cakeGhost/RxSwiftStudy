@@ -1,5 +1,5 @@
 
-✔️  Ch3: Subjects
+# ✔️  Ch3: Subjects
 Subject는 Observable이 될 수도 있고 Observer가 될 수도 있음
 
 즉, Subject는 observable과 observer의 역할을
@@ -30,17 +30,13 @@ Replay Subject : BufferSize와 함께 생성 BehaviorSubject와 유사하지만,
 
 Variable : BehaviorSubject의 Wrapper라고 보면 된다. BehaviorSubject처럼 작동하며, 더 쉽게 사용하기 위해 만들어짐
 
-Publish Subject
+# Publish Subject
 PublishSubject는 Subscriber가 새로운 이벤트만 전달받으면 되는 경우에 사용하기 좋음
 
 ( 즉, Subscribe 이전에 발생했던 이벤트는 전혀 몰라도 되는 경우 )
 
-# publishSubject
-
-PublishSubject는 Subscriber가 새로운 이벤트만 전달받으면 되는 경우에 사용하기 좋음
-
-( 즉, Subscribe 이전에 발생했던 이벤트는 전혀 몰라도 되는 경우 )
 ![publishSubject](https://user-images.githubusercontent.com/94977962/147181815-e349e29e-ab61-43ee-b17f-f0c00e5c069e.png)
+
 
 ✔️ 1번 시퀀스에서 (1)이벤트를 발생하지만 subscriber가 없으므로 이벤트는 emit되지 않음
 
@@ -93,7 +89,7 @@ BehaviorSubject는 subscription이 생성됨과 동시에 반드시 최신 이�
 
 반드시 초기 값을 설정해야만 한다!
 
-Replay Subjects
+# Replay Subjects
 Replay Subject는 최신 이벤트를 여러개 캐싱하고 있다가,
 
 새로운 Subscriber에게 한 번에 전달함
