@@ -19,9 +19,9 @@ Subscribe하는 방식이 다름
 Types of Subjects
 Subject에는 종류가 4가지가 있음
 
-Publish Subject : Element가 없는 아무것도 없는 빈 상태로 subscribe를 시작 subscriber는 subscribe한 시점 이후에 발생되는 이벤트만 전달받음
+**Publish Subject** : Element가 없는 아무것도 없는 빈 상태로 subscribe를 시작 subscriber는 subscribe한 시점 이후에 발생되는 이벤트만 전달받음
 
-Behavior Subject : Publish Subject와 유사하지만, 초기화 값을 가진 상태로 시작하는 것이 차이점 초기값을 방출하거나, 가장 최신의 (가장 늦은) element들을 새 subscribers에게 방출
+**Behavior Subject** : Publish Subject와 유사하지만, 초기화 값을 가진 상태로 시작하는 것이 차이점 초기값을 방출하거나, 가장 최신의 (가장 늦은) element들을 새 subscribers에게 방출
 
    subscribe가 발생하면,
 
@@ -53,9 +53,12 @@ subject.onNext("누구 듣고 계신분 있나요..?") // 새로운 element 를 
 여기까지 실행했을 시 아무 것도 출력되지 않음
 
 이유는 observers가 없기 때문 !
-
+   
+```
 // subject에 대한 subscription을 생성
 let subscriptionOne = subject.subscribe(onNext: { string in print(string)})
+```
+   
 여기까지 실행했을 시에도
 
 아무것도 출력되지 않음 ! !
@@ -113,7 +116,10 @@ BehaviorSubject는 항상 초기값이있어야한다고 했지?
 Variable을 생성할 때는 항상 초기 값이 있어야함
 
 Variable에 asObservable()을 사용하면 Subject에 접근할 수 있음
-내가 생각하는.. 나만의.. 정리
+   
+   
+   
+### 내가 생각하는.. 나만의.. 정리
 fshSubject : 이전데이터 볼 수 없고 새로운 이벤트만 전달받으면 되는 경우 사용
 
 BehaviorSubject : 가장 최신 이벤트 하나만 보고 싶은 경우
