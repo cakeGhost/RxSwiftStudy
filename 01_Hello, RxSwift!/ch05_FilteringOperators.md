@@ -4,6 +4,10 @@
 
 원하는 이벤트만 받을 수 있음 
 
+<br>
+<br>
+
+
 ## **Ignoring operators**
 
 이름에서 유추할 수 있듯이 모든 `.next` 이벤트를 무시한다.
@@ -12,7 +16,8 @@
 
 결론적으로 시퀀스가 종료되는 시점만 알 수 있게 되는 것 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/02e9353c-868c-4728-af29-07e23f692a72/Untitled.png)
+![ignoreElements](https://user-images.githubusercontent.com/94977962/147309666-518c4d7c-5a51-4968-8029-73be3a4e21db.png)
+
 
 그림에서 위에 있는 화살표에서 1,2,3 이벤트가 발생하고 있음
 
@@ -24,7 +29,8 @@
 
 코드를 통해서 알아보자 
 
-![스크린샷 2021-12-23 오전 11.14.28.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/da8871f8-8974-4895-b73e-96db69ab45a2/스크린샷_2021-12-23_오전_11.14.28.png)
+<img width="398" alt="ignore_code" src="https://user-images.githubusercontent.com/94977962/147309676-b42faa78-e2c0-42fc-b4ac-4238b2ba1fa3.png">
+
 
 strikes 라는 Sequence에 ignoreElements()가 호출되고 이를 subscribe하고 있음
 
@@ -32,17 +38,26 @@ strikes 라는 Sequence에 ignoreElements()가 호출되고 이를 subscribe하�
 
 completed 이벤트가 발생해야 비로소 print문이 수행되는 것을 확인함 
 
+<br>
+<br>
+
+
 ## elementAt
 
 Observable에서 발생하는 이벤트 중 n번째 이벤트만 받고 싶을때 사용
 
 코드를 보면
 
-![스크린샷 2021-12-23 오전 11.28.48.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4aee616a-a1ff-4046-b02d-615498224def/스크린샷_2021-12-23_오전_11.28.48.png)
+<img width="229" alt="strike" src="https://user-images.githubusercontent.com/94977962/147309714-2a119444-92b0-4b48-b97d-f7437228a496.png">
+
 
 strikes를 subscrieb했지만 2번째 이벤트에만 반응
 
 0번째, 1번째 이벤트는ellement가 걸러주기 때문에  !!
+
+<br>
+<br>
+
 
 ## Filter
 
@@ -50,7 +65,8 @@ filter는 Bool을 return하는 클로저를 받아서 모든 Observable 이벤�
 
 클로저를 true로 만족시키는 이벤트만 filter를 통과하게 됨 
 
-![스크린샷 2021-12-23 오전 11.34.55.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/17568d41-7500-414e-a23b-8acab1069bfb/스크린샷_2021-12-23_오전_11.34.55.png)
+<img width="412" alt="filter" src="https://user-images.githubusercontent.com/94977962/147309733-32e368e7-10a9-4c50-8345-2f35379e5bc9.png">
+
 
 위 sequence에서 1,2,3에 해당하는 이벤트가 발생하고 있음 
 
@@ -60,13 +76,18 @@ filter는 Bool을 return하는 클로저를 받아서 모든 Observable 이벤�
 
 코드를 통해 알아보자 
 
-![스크린샷 2021-12-23 오전 11.44.19.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/31cb9c52-22f2-4e0b-9303-a3701580ee81/스크린샷_2021-12-23_오전_11.44.19.png)
+<img width="285" alt="filter_Code" src="https://user-images.githubusercontent.com/94977962/147309780-920e446b-d746-45b9-b3a3-2b7a37df33cb.png">
+
 
 1. 6개의 Int타입 이벤트를 발생시킴
 2. filter를 걸고, filter로 전달된 클로져에서 이벤트의 Element가 짝수 인지 검사
 3. filter된 이벤트들을 subscribe하여 출력해주고 있음  
 
 ---
+
+<br>
+<br>
+
 
 ## Skipping operators
 
@@ -76,16 +97,21 @@ skip 연산자를 사용하면 첫번째부터 매개변수로 전달된 숫자�
 
 skip(2)를 사용하는 경우, 처음에 발생한 2개의 이벤트가 무시되고 3만 전달됨 
 
-![스크린샷 2021-12-23 오전 11.47.49.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fdb36b36-af14-4886-b11f-b16f41f55e4d/스크린샷_2021-12-23_오전_11.47.49.png)
+<img width="437" alt="skipOperator" src="https://user-images.githubusercontent.com/94977962/147309795-3e7aad55-39c0-4220-b8d2-0e9030f1e4f1.png">
+
 
 코드를 통해 살펴 보자 
+<img width="341" alt="sip" src="https://user-images.githubusercontent.com/94977962/147309810-0ed35153-e234-4c09-82ed-cab4371e66e2.png">
 
-![스크린샷 2021-12-23 오전 11.51.16.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0feef939-7c68-46e5-a2a5-0836d704071f/스크린샷_2021-12-23_오전_11.51.16.png)
 
 1. A B C D E 이벤트가 발생하고 있음
 2. skip(3)을 사용하여 첫 3개 이벤트는 무시함 
 
 ---
+
+<br>
+<br>
+
 
 ## skipWhile
 
@@ -101,9 +127,14 @@ skipWhile은 조건을 통과하지 못한애들을 전달하므로
 
 1,2,3,4 가 아닌 5,6,7을 전달한다. 
 
+
 ![스크린샷 2021-12-23 오전 11.57.18.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/81025459-3eda-47eb-9d19-eaaef1f8abab/스크린샷_2021-12-23_오전_11.57.18.png)
 
 ---
+
+<br>
+<br>
+
 
 ## skipUntil(_:)
 
@@ -126,8 +157,8 @@ Dynamic한 filtering을 제공하는 몇가지 Operator가 있음
 이 sequence에 `skipUtil`을 걸고, 다른 sequence에 전달해주면 어떻게 될까?
 
 → 결과는 **Trigger sequence의 이벤트가 발생할 때 까지, 원래 시퀀스의 모든 이벤트가 skip 됨** 
+<img width="416" alt="skipUntil" src="https://user-images.githubusercontent.com/94977962/147309840-f58ecfea-dafa-4ad5-993a-359b22a2985e.png">
 
-![스크린샷 2021-12-23 오후 2.03.16.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/579dabca-ec8a-4ca2-9780-c20126a2976d/스크린샷_2021-12-23_오후_2.03.16.png)
 
 위의 그림을 보면 1,2,3이 발생하고 있는 것을 볼 수 있음
 
@@ -158,9 +189,16 @@ trigger.onNext("X")
 subject.onNext("C")
 ```
 
-![결과는 trigger 이후의 이벤트](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5c198f69-edbe-4435-91eb-fded19aa2db9/스크린샷_2021-12-23_오후_2.20.53.png)
 
 결과는 trigger 이후의 이벤트
+
+<img width="134" alt="result" src="https://user-images.githubusercontent.com/94977962/147309871-03a36330-f714-4782-91ad-e01ddea8c356.png">
+
+
+
+<br>
+<br>
+
 
 # Taking operators
 
@@ -170,9 +208,13 @@ skip은 처음 발생하는 n개의 이벤트를 무시하는 기능이였다면
 
 take는 **처음 발생하는 n개의 이벤트만 받고 나머지는 무시함** 
 
-![스크린샷 2021-12-23 오후 2.22.24.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fe02b35f-e032-4e15-9772-c0dc971b32a9/스크린샷_2021-12-23_오후_2.22.24.png)
+<img width="420" alt="Taking" src="https://user-images.githubusercontent.com/94977962/147309885-09e1a694-a278-4621-ae70-867b45635439.png">
 
-![스크린샷 2021-12-23 오후 2.24.19.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc0085c5-78ea-4841-9cfe-10f54fd74831/스크린샷_2021-12-23_오후_2.24.19.png)
+
+
+<br>
+<br>
+
 
 ## takeWhile(_ :)
 
@@ -267,6 +309,10 @@ viewController가 deallocated되면 더 이상 이벤트를 받지 않는다는 
 
 (사실 dispose하는게 가장 깔끔한 방법)
 
+<br>
+<br>
+
+
 ## distinctUntilChanged
 
 동일한 이벤트가 반복되서 발생할 수 있음
@@ -341,7 +387,6 @@ Observable<NSNumber>.of(10, 110, 20, 200, 210, 310)
 
 ![스크린샷 2021-12-23 오후 3.04.25.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5695b18b-3321-46e8-8541-c874c5086e59/스크린샷_2021-12-23_오후_3.04.25.png)
 
----
 
 ---
 
@@ -349,7 +394,9 @@ Observable<NSNumber>.of(10, 110, 20, 200, 210, 310)
 
 ---
 
----
+<br>
+<br>
+
 
 ## Filtering Operators in Practice
 
